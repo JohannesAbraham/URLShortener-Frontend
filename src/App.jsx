@@ -1,9 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 
-require("dotenv").config();
-const VITE_URL = process.env.VITE_URL;
-
 function App() {
   const [longUrl, setLongUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
@@ -12,7 +9,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${VITE_URL}/shorten`, { longUrl });
+      const res = await axios.post(`https://urlshortener-backend-1-cxtx.onrender.com/shorten`, { longUrl });
       setShortUrl(res.data.shortUrl);
     } catch (err) {
       console.error(err);
@@ -21,7 +18,7 @@ function App() {
 
   const fetchAdminUrls = async () => {
     try {
-      const res = await axios.get(`${VITE_URL}/admin/urls`);
+      const res = await axios.get(`https://urlshortener-backend-1-cxtx.onrender.com/admin/urls`);
       setAdminUrls(res.data);
       setShowAdmin(true);
     } catch (err) {
