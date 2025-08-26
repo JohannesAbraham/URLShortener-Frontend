@@ -23,7 +23,6 @@ function App() {
       setShowAdmin(true);
     } catch (err) {
       console.error(err);
-      alert("Invalid password or error fetching URLs");
     }
   };
 
